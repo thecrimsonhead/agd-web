@@ -1,8 +1,8 @@
 #!/bin/sh
 # Publica la landing en web.agdesign.agency. Lo corre el cron del VPS despues de git pull.
-# Uso: sh ~/agd-web/deploy.sh   (por defecto /home/agdesign/public_html/web.agdesign.agency)
+# Uso: sh ~/agd-web/deploy.sh   (por defecto /home/agdesign/public_html/web)
 set -e
-DEST="${1:-/home/agdesign/public_html/web.agdesign.agency}"
+DEST="${1:-/home/agdesign/public_html/web}"
 cd "$(dirname "$0")"
 mkdir -p "$DEST"
 OWNER=$(stat -c %U:%G "$DEST")
