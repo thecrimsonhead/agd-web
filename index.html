@@ -220,6 +220,22 @@ body>.wrap .wa-top{color:#fff}
 body>.wrap .oferta{box-shadow:none}
 body>.wrap .oferta .antes s{color:#cfcfd6}
 body>.wrap .ahorro{color:#6ee7a0;background:rgba(37,211,102,.14)}
+
+/* Galeria lightbox */
+.obra{cursor:zoom-in;position:relative}
+.obra::after{content:"Ver completa";position:absolute;right:10px;top:10px;background:rgba(18,12,32,.78);color:#fff;font-size:12px;font-weight:600;border-radius:20px;padding:3px 10px;opacity:.92;pointer-events:none}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,6,20,.92);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.lb.on{opacity:1;visibility:visible}
+.lb-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;color:#fff}
+.lb-top b{font-size:16px;display:block}.lb-top span{display:block;font-size:13px;color:#B9B4C6}
+.lb-x{background:rgba(255,255,255,.12);border:0;color:#fff;width:42px;height:42px;border-radius:50%;font-size:24px;line-height:1;cursor:pointer;flex:none}
+.lb-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px 24px;overscroll-behavior:contain}
+.lb-scroll img{display:block;width:100%;max-width:960px;margin:0 auto;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#E9E3F2}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.14);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:26px;cursor:pointer;z-index:2}
+.lb-nav:hover,.lb-x:hover{background:rgba(255,255,255,.24)}
+.lb-prev{left:12px}.lb-next{right:12px}
+.lb-cnt{font-size:12px;color:#B9B4C6;text-align:center;padding:0 0 10px}
+@media(max-width:700px){.lb-nav{top:auto;bottom:16px;transform:none;width:42px;height:42px}}
 </style>
 </head>
 <body>
@@ -428,6 +444,13 @@ body>.wrap .ahorro{color:#6ee7a0;background:rgba(37,211,102,.14)}
 </div>
 </section>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galería de páginas" aria-hidden="true">
+  <div class="lb-top"><div><b id="lbT"></b><span id="lbS"></span></div><button class="lb-x" id="lbX" aria-label="Cerrar">&times;</button></div>
+  <div class="lb-cnt" id="lbC"></div>
+  <div class="lb-scroll" id="lbScroll"><img id="lbI" alt=""></div>
+  <button class="lb-nav lb-prev" id="lbP" aria-label="Anterior">&#8249;</button>
+  <button class="lb-nav lb-next" id="lbN" aria-label="Siguiente">&#8250;</button>
+</div>
 <footer>Creado con amor por AGDesign · agdesign.agency · 2026</footer>
 <a class="wa-flota wa-link" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 32 32" fill="#06210f"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6 0-5.9 4.9-10.6 11-10.6s11 4.8 11 10.6S22.1 26.4 16 26.4zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6l-1-2.5c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 2-.8 2.2-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.3z"/></svg></a>
 <div class="flota off" id="flota"><a class="btn pri" href="#pagar">Quiero mi página por $3,990</a></div>
@@ -598,6 +621,43 @@ body>.wrap .ahorro{color:#6ee7a0;background:rgba(37,211,102,.14)}
     new IntersectionObserver(function (es) { enPago = es[0].isIntersecting; if (enPago) vioPago = true; flotaVer(); }).observe(pagar);
   } else { document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); }); }
   window.addEventListener('scroll', flotaVer, { passive: true });
+})();
+</script>
+
+<script>
+(function () {
+  var lb = document.getElementById('lb'), img = document.getElementById('lbI'), sc = document.getElementById('lbScroll');
+  var T = document.getElementById('lbT'), S = document.getElementById('lbS'), C = document.getElementById('lbC');
+  var i = 0, ultimo = null;
+  function obras() { return Array.prototype.slice.call(document.querySelectorAll('.obras .obra')); }
+  function pinta() {
+    var o = obras(); if (!o.length) return; i = (i + o.length) % o.length;
+    var f = o[i], im = f.querySelector('img');
+    img.src = im.src; img.alt = im.alt;
+    T.textContent = f.querySelector('b').textContent; S.textContent = f.querySelector('figcaption span').textContent;
+    C.textContent = (i + 1) + ' de ' + o.length + (o.length > 1 ? ' · baja para ver la página completa' : '');
+    sc.scrollTop = 0;
+  }
+  function abre(n) { ultimo = document.activeElement; i = n; pinta(); lb.classList.add('on'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; document.getElementById('lbX').focus(); }
+  function cierra() { lb.classList.remove('on'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (ultimo) ultimo.focus(); }
+  document.querySelector('.obras').addEventListener('click', function (e) {
+    var f = e.target.closest('.obra'); if (!f) return; abre(obras().indexOf(f));
+  });
+  obras().forEach(function (f) { f.tabIndex = 0; f.setAttribute('role', 'button'); f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abre(obras().indexOf(f)); } }); });
+  document.getElementById('lbX').onclick = cierra;
+  document.getElementById('lbP').onclick = function () { i--; pinta(); };
+  document.getElementById('lbN').onclick = function () { i++; pinta(); };
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target === sc) cierra(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('on')) return;
+    if (e.key === 'Escape') cierra(); else if (e.key === 'ArrowLeft') { i--; pinta(); } else if (e.key === 'ArrowRight') { i++; pinta(); }
+  });
+  var x0 = null, y0 = null;
+  sc.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  sc.addEventListener('touchend', function (e) {
+    if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { i += dx < 0 ? 1 : -1; pinta(); }
+  }, { passive: true });
 })();
 </script>
 </body>
