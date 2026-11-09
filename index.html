@@ -116,6 +116,13 @@ select{width:100%;font:inherit;color:#fff;background:var(--card2);border:1px sol
 .confianza span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#CC2244;margin-right:8px;vertical-align:middle}
 @media(min-width:700px){.wa-flota{bottom:24px}}
 @media(min-width:1000px){.confianza{justify-content:flex-start}}
+.obras{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.obra{margin:0;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.obra img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#1a1a26}
+.obra figcaption{padding:12px 14px}
+.obra b{display:block;font-size:16px}
+.obra span{color:var(--mute);font-size:13px;line-height:18px}
+@media(min-width:1000px){.obras{grid-template-columns:repeat(3,1fr);gap:18px}}
 [hidden]{display:none!important}
 @media(min-width:700px){.grid{grid-template-columns:1fr 1fr}.ctas{flex-direction:row;justify-content:center}.flota{display:none}footer{padding-bottom:22px}.doble{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.grid.c4{grid-template-columns:repeat(4,1fr)}.grid.c3{grid-template-columns:repeat(3,1fr)}
@@ -168,6 +175,21 @@ select{width:100%;font:inherit;color:#fff;background:var(--card2);border:1px sol
     <div class="card"><div class="ico"></div><h3>Dominio por un año</h3><p>Tu dirección propia, por ejemplo tunegocio.com, incluida el primer año.</p></div>
     <div class="card"><div class="ico"></div><h3>Hosting por un año</h3><p>Nosotros la mantenemos en línea el primer año. Tú no te preocupas por servidores.</p></div>
     <div class="card"><div class="ico"></div><h3>Botón de WhatsApp</h3><p>Quien visita tu página te escribe directo a tu WhatsApp con un clic.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+  <h2>Páginas que hemos hecho</h2>
+  <p class="subt">Negocios reales que ya están en internet con nosotros.</p>
+  <div class="obras">
+    <figure class="obra"><img src="https://agdesign.agency/wp-content/uploads/2022/12/theorema.jpg" alt="Theorema, página web corporativa hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Theorema</b><span>Página web corporativa</span></figcaption></figure>
+    <figure class="obra"><img src="https://agdesign.agency/wp-content/uploads/2022/12/publicasa.jpg" alt="Publicasa, página web para inmobiliaria hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Publicasa</b><span>Página web para inmobiliaria</span></figcaption></figure>
+    <figure class="obra"><img src="https://agdesign.agency/wp-content/uploads/2022/12/edantours.jpg" alt="Edan Tours, página web para agencia de viajes hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Edan Tours</b><span>Página web para agencia de viajes</span></figcaption></figure>
+    <figure class="obra"><img src="https://agdesign.agency/wp-content/uploads/2022/12/mspazio.png" alt="Mspazio, tienda en línea hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Mspazio</b><span>Tienda en línea</span></figcaption></figure>
+    <figure class="obra"><img src="https://agdesign.agency/wp-content/uploads/2022/12/neros.jpg" alt="Neros, página web para inmobiliaria hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Neros</b><span>Página web para inmobiliaria</span></figcaption></figure>
+    <figure class="obra"><img src="https://agdesign.agency/wp-content/uploads/2022/12/lps.jpg" alt="LPS, página web de servicios hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>LPS</b><span>Página web de servicios</span></figcaption></figure>
   </div>
 </div>
 </section>
