@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tu página web en 72 horas por $3,500 | AGDesign</title>
-<meta name="description" content="Hacemos la página web de tu negocio en 72 horas: diseño, dominio y hosting del primer año y botón de WhatsApp. $3,500 MXN, pago único.">
-<meta property="og:title" content="Tu página web en 72 horas por $3,500">
+<title>Tu página web en 72 horas por $4,000 | AGDesign</title>
+<meta name="description" content="Hacemos la página web de tu negocio en 72 horas: diseño, dominio y hosting del primer año y botón de WhatsApp. $4,000 MXN, pago único.">
+<meta property="og:title" content="Tu página web en 72 horas por $4,000">
 <meta property="og:description" content="Diseño, dominio y hosting del primer año y botón de WhatsApp. Pago único.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#080810">
@@ -103,6 +103,19 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
 .flota{position:fixed;left:16px;right:16px;bottom:14px;display:flex;justify-content:center;z-index:5;transition:opacity .2s}
 .flota a{box-shadow:0 10px 30px rgba(0,0,0,.45);width:100%;max-width:420px}
 .flota.off{opacity:0;pointer-events:none}
+.chk-fac{display:flex;gap:10px;align-items:center;font-weight:400;font-size:15px;margin:4px 0 14px;cursor:pointer}
+.chk-fac input{width:18px;height:18px;accent-color:#CC2244}
+select{width:100%;font:inherit;color:#fff;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.campo.mal select{border-color:var(--rojo)}
+.desglose{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:15px}
+.desglose div{display:flex;justify-content:space-between;color:var(--mute)}
+.desglose .t{color:#fff;font-weight:700;border-top:1px solid var(--line);margin-top:6px;padding-top:6px}
+.wa-flota{position:fixed;right:16px;bottom:84px;width:56px;height:56px;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:6}
+.wa-flota svg{width:30px;height:30px}
+.confianza{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;color:var(--mute);font-size:14px;margin-top:20px}
+.confianza span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#CC2244;margin-right:8px;vertical-align:middle}
+@media(min-width:700px){.wa-flota{bottom:24px}}
+@media(min-width:1000px){.confianza{justify-content:flex-start}}
 [hidden]{display:none!important}
 @media(min-width:700px){.grid{grid-template-columns:1fr 1fr}.ctas{flex-direction:row;justify-content:center}.flota{display:none}footer{padding-bottom:22px}.doble{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.grid.c4{grid-template-columns:repeat(4,1fr)}.grid.c3{grid-template-columns:repeat(3,1fr)}
@@ -122,12 +135,13 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
     <div class="label">Página web para tu negocio</div>
     <h1>Que te encuentren en Google <span class="g">en 72 horas</span></h1>
     <p class="lead">Hoy tus clientes buscan en internet antes de llamar. Si no apareces, le marcan a tu competencia. Te hacemos tu página lista para recibir mensajes por WhatsApp.</p>
-    <div class="precio"><b>$3,500</b><span>MXN, pago único</span></div>
+    <div class="precio"><b>$4,000</b><span>MXN, pago único</span></div>
     <div class="ctas">
       <a class="btn pri" href="#pagar">Quiero mi página</a>
       <a class="btn sec wa-link" href="#" target="_blank" rel="noopener">Tengo una pregunta</a>
     </div>
-    <p class="nota">Pago seguro con tarjeta de crédito o débito, a través de Mercado Pago.</p>
+    <p class="nota">Incluye dominio y hosting del primer año. Pago seguro con tarjeta a través de Mercado Pago. Si necesitas factura, se agrega el IVA.</p>
+    <div class="confianza"><span>Lista en 72 horas</span><span>Sin mensualidades</span><span>Te acompañamos por WhatsApp</span></div>
   </div>
   <div class="mock" aria-hidden="true">
     <div class="phone"><div class="scr">
@@ -173,9 +187,9 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
 <section id="pagar">
 <div class="wrap pago">
   <h2>Empecemos tu página</h2>
-  <p class="subt">Dos pasos: tus datos y el pago.</p>
+  <p class="subt">Dos pasos: tus datos y el pago. Toma un par de minutos.</p>
   <div class="card">
-    <div class="res"><div><b>Página web para tu negocio</b><span>Diseño, dominio y hosting del primer año, botón de WhatsApp</span></div><div class="m">$3,500</div></div>
+    <div class="res"><div><b>Página web para tu negocio</b><span>Diseño, dominio y hosting del primer año, botón de WhatsApp</span></div><div class="m" id="total">$4,000</div></div>
     <div class="pasos"><div class="on" id="p1"></div><div id="p2"></div></div>
 
     <form id="f" novalidate>
@@ -187,6 +201,20 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
         <div class="campo"><label for="whatsapp">Tu WhatsApp</label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="10 dígitos" required><p class="msg">Escribe un WhatsApp de 10 dígitos.</p></div>
         <div class="campo"><label for="email">Tu correo</label><input id="email" name="email" type="email" autocomplete="email" required><p class="msg">Escribe un correo válido.</p></div>
       </div>
+      <label class="chk-fac"><input type="checkbox" id="fac" name="fac"> Necesito factura (se agrega IVA de 16%)</label>
+      <div id="fiscal" hidden>
+        <div class="doble">
+          <div class="campo"><label for="rfc">RFC</label><input id="rfc" name="rfc" maxlength="13" autocomplete="off" style="text-transform:uppercase"><p class="msg">Escribe un RFC válido de 12 o 13 caracteres.</p></div>
+          <div class="campo"><label for="cp_fiscal">Código postal fiscal</label><input id="cp_fiscal" name="cp_fiscal" inputmode="numeric" maxlength="5"><p class="msg">Escribe los 5 dígitos.</p></div>
+        </div>
+        <div class="campo"><label for="razon_social">Nombre o razón social</label><input id="razon_social" name="razon_social" placeholder="Como aparece en tu constancia de situación fiscal"><p class="msg">Escribe tu nombre o razón social.</p></div>
+        <div class="doble">
+          <div class="campo"><label for="regimen">Régimen fiscal</label><select id="regimen" name="regimen"><option value="">Elige tu régimen</option><option value="626">626 Régimen Simplificado de Confianza</option><option value="612">612 Actividades Empresariales y Profesionales</option><option value="601">601 General de Ley Personas Morales</option><option value="621">621 Incorporación Fiscal</option><option value="606">606 Arrendamiento</option><option value="625">625 Plataformas Tecnológicas</option><option value="603">603 Personas Morales sin Fines de Lucro</option><option value="605">605 Sueldos y Salarios</option><option value="616">616 Sin obligaciones fiscales</option></select><p class="msg">Elige tu régimen fiscal.</p></div>
+          <div class="campo"><label for="uso_cfdi">Uso del CFDI</label><select id="uso_cfdi" name="uso_cfdi"><option value="G03">G03 Gastos en general</option><option value="S01">S01 Sin efectos fiscales</option></select></div>
+        </div>
+        <div class="campo"><label for="correo_factura">Correo para la factura</label><input id="correo_factura" name="correo_factura" type="email" placeholder="Si lo dejas vacío, usamos tu correo"><p class="msg">Escribe un correo válido.</p></div>
+      </div>
+      <div class="desglose" id="desglose" hidden><div><span>Subtotal</span><span>$4,000</span></div><div><span>IVA 16%</span><span>$640</span></div><div class="t"><span>Total</span><span>$4,640</span></div></div>
       <div class="trampa" aria-hidden="true"><label for="sitio">No llenar</label><input id="sitio" name="sitio" tabindex="-1" autocomplete="off"></div>
       <button class="btn pri" style="width:100%" type="submit">Continuar al pago</button>
       <p class="legal">Usamos tus datos solo para hacer tu página y escribirte por WhatsApp.</p>
@@ -226,13 +254,16 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
   <h2>Preguntas frecuentes</h2>
   <details><summary>¿Qué necesito tener listo?</summary><p>Tu logo si tienes, unas fotos de tu negocio o de tu trabajo, la lista de tus servicios, horarios, dirección y el número de WhatsApp donde quieres recibir mensajes.</p></details>
   <details><summary>¿Cuándo empiezan las 72 horas?</summary><p>Desde que nos mandas tu información completa por WhatsApp.</p></details>
-  <details><summary>¿Cómo pago?</summary><p>Aquí mismo, con tarjeta de crédito o débito a través de Mercado Pago. Si prefieres transferencia, escríbenos por WhatsApp.</p></details>
+  <details><summary>¿Cómo pago?</summary><p>Aquí mismo, con tarjeta de crédito o débito a través de Mercado Pago. Son $4,000, o $4,640 si necesitas factura. Si prefieres transferencia, escríbenos por WhatsApp.</p></details>
+  <details><summary>¿Me pueden dar factura?</summary><p>Sí. Marca la casilla de factura al pagar, pon tus datos fiscales y se agrega el IVA de 16%: el total queda en $4,640. La factura te llega a tu correo.</p></details>
+  <details><summary>¿Qué pasa después del primer año?</summary><p>El dominio y el hosting están incluidos el primer año. Antes de que venzan te avisamos y tú decides si los renuevas.</p></details>
   <details><summary>¿Y si tengo dudas antes de pagar?</summary><p>Escríbenos por WhatsApp y te respondemos.</p></details>
 </div>
 </section>
 
 <footer>Diseñado por Alan García · AGDesign · agdesign.agency · 2026</footer>
-<div class="flota off" id="flota"><a class="btn pri" href="#pagar">Quiero mi página por $3,500</a></div>
+<a class="wa-flota wa-link" id="waFlota" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 32 32" fill="#06210f"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6 0-5.9 4.9-10.6 11-10.6s11 4.8 11 10.6S22.1 26.4 16 26.4zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.6-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6l-1-2.5c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 2-.8 2.2-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.3z"/></svg></a>
+<div class="flota off" id="flota"><a class="btn pri" href="#pagar">Quiero mi página por $4,000</a></div>
 
 <script>
 (function () {
@@ -240,11 +271,13 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
   var MP_PUBLIC_KEY = '';
   var API = 'https://n8n.srv2032280.hstgr.cloud/webhook/agd-pago';
   var WA = '526635419838';
-  var MONTO = 3500;
+  var BASE = 4000, IVA = 0.16;
+  function total() { return document.getElementById('fac').checked ? Math.round(BASE * (1 + IVA)) : BASE; }
+  function pesos(n) { return '$' + n.toLocaleString('es-MX'); }
 
   function wa(txt) { return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(txt); }
   function setWa(txt) { document.querySelectorAll('.wa-link,#waTop').forEach(function (a) { a.href = wa(txt); }); }
-  setWa('Hola, me interesa la página web de $3,500.');
+  setWa('Hola, me interesa la página web de $4,000.');
 
   var q = {}; try { q = Object.fromEntries(new URLSearchParams(location.search)); } catch (e) {}
   var origen = q.r || q.utm_source || (document.referrer ? 'ref:' + document.referrer.split('/')[2] : 'directo');
@@ -260,6 +293,15 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
   }
   function marca(id, mal) { document.getElementById(id).closest('.campo').classList.toggle('mal', mal); }
   ['nombre', 'negocio', 'whatsapp', 'email'].forEach(function (id) { document.getElementById(id).addEventListener('input', function () { marca(id, false); }); });
+  ['rfc', 'cp_fiscal', 'razon_social', 'regimen', 'correo_factura'].forEach(function (id) { document.getElementById(id).addEventListener('input', function () { marca(id, false); }); });
+  var fac = document.getElementById('fac');
+  function pintaTotal() {
+    var con = fac.checked;
+    document.getElementById('fiscal').hidden = !con;
+    document.getElementById('desglose').hidden = !con;
+    document.getElementById('total').textContent = pesos(total());
+  }
+  fac.addEventListener('change', pintaTotal);
 
   f.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -269,10 +311,24 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
     if (d.negocio.length < 2) malos.push('negocio');
     if (!/^[2-9]\d{9}$/.test(d.whatsapp)) malos.push('whatsapp');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) malos.push('email');
+    if (fac.checked) {
+      d.factura = true;
+      d.rfc = f.rfc.value.trim().toUpperCase().replace(/\s/g, '');
+      d.cp_fiscal = f.cp_fiscal.value.replace(/\D/g, '');
+      d.razon_social = f.razon_social.value.trim();
+      d.regimen = f.regimen.value;
+      d.uso_cfdi = f.uso_cfdi.value;
+      d.correo_factura = f.correo_factura.value.trim() || d.email;
+      if (!/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(d.rfc)) malos.push('rfc');
+      if (!/^\d{5}$/.test(d.cp_fiscal)) malos.push('cp_fiscal');
+      if (d.razon_social.length < 3) malos.push('razon_social');
+      if (!d.regimen) malos.push('regimen');
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.correo_factura)) malos.push('correo_factura');
+    } else { d.factura = false; }
     malos.forEach(function (id) { marca(id, true); });
     if (malos.length) { document.getElementById(malos[0]).focus(); return; }
     datos = d;
-    setWa('Hola, soy ' + d.nombre + ' de ' + d.negocio + '. Quiero mi página web de $3,500.');
+    setWa('Hola, soy ' + d.nombre + ' de ' + d.negocio + '. Quiero mi página web de $4,000.');
     enviar(Object.assign({ a: 'datos', ref: ref, origen: origen, sitio: f.sitio.value }, d)).catch(function () {});
     f.hidden = true;
     document.getElementById('p2').classList.add('on');
@@ -297,9 +353,9 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
     sdk().then(function () {
       var mp = new MercadoPago(MP_PUBLIC_KEY, { locale: 'es-MX' });
       return mp.bricks().create('cardPayment', 'brick', {
-        initialization: { amount: MONTO, payer: { email: datos.email } },
+        initialization: { amount: total(), payer: { email: datos.email } },
         customization: {
-          visual: { style: { theme: 'dark', customVariables: { baseColor: '#CC2244', formBackgroundColor: '#12121C', inputBackgroundColor: '#0d0d16', borderRadiusMedium: '10px', borderRadiusLarge: '13px' } }, texts: { formSubmit: 'Pagar $3,500' } },
+          visual: { style: { theme: 'dark', customVariables: { baseColor: '#CC2244', formBackgroundColor: '#12121C', inputBackgroundColor: '#0d0d16', borderRadiusMedium: '10px', borderRadiusLarge: '13px' } }, texts: { formSubmit: 'Pagar ' + pesos(total()) } },
           paymentMethods: { maxInstallments: 1 }
         },
         callbacks: {
@@ -334,11 +390,29 @@ footer{border-top:1px solid var(--line);padding:22px 0 96px;text-align:center;co
     });
   }
 
+  // Eventos para Xonar: aviso a Alan cuando alguien lleva 2 min viendo la pagina (tiempo visible, una vez por visita)
+  var vioPago = false, seg = 0, avisado = false;
+  try { avisado = sessionStorage.getItem('agd_int') === '1'; } catch (e) {}
+  var movil = window.matchMedia('(max-width: 700px)').matches;
+  function evento(ev) {
+    var o = { a: 'evento', ev: ev, ref: ref, origen: origen, seg: seg, vio_pago: vioPago, movil: movil };
+    if (datos) { o.nombre = datos.nombre; o.negocio = datos.negocio; }
+    var body = new URLSearchParams({ d: JSON.stringify(o) });
+    try { if (navigator.sendBeacon && navigator.sendBeacon(API, body)) return; } catch (e) {}
+    fetch(API, { method: 'POST', body: body, keepalive: true }).catch(function () {});
+  }
+  setInterval(function () {
+    if (document.visibilityState !== 'visible') return;
+    seg += 5;
+    if (seg >= 120 && !avisado) { avisado = true; try { sessionStorage.setItem('agd_int', '1'); } catch (e) {} evento('interes'); }
+  }, 5000);
+  document.querySelectorAll('.wa-link,#waTop').forEach(function (a) { a.addEventListener('click', function () { evento('wa'); }); });
+
   // Oculta el boton flotante cuando ya esta en la seccion de pago
   var flota = document.getElementById('flota'), pagar = document.getElementById('pagar');
   var enPago = false, pagado = false;
   function flotaVer() { flota.classList.toggle('off', pagado || enPago || window.scrollY < 520); }
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { enPago = es[0].isIntersecting; flotaVer(); }).observe(pagar);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { enPago = es[0].isIntersecting; if (enPago) vioPago = true; flotaVer(); }).observe(pagar);
   window.addEventListener('scroll', flotaVer, { passive: true });
 })();
 </script>
