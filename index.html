@@ -117,6 +117,7 @@ section{padding:56px 0}
 .obra{margin:0;background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:transform .25s}
 .obra:hover{transform:translateY(-4px)}
 .obra img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#1a1a26}
+.obras.apps .obra img{aspect-ratio:4/5;object-position:top}
 .obra figcaption{padding:12px 14px}
 .obra b{display:block;font-size:16px}
 .obra span{color:var(--mute);font-size:13px;line-height:18px}
@@ -224,8 +225,9 @@ body>.wrap .ahorro{color:#6ee7a0;background:rgba(37,211,102,.14)}
 /* Galeria lightbox */
 .obra{cursor:zoom-in;position:relative}
 .obra::after{content:"Ver completa";position:absolute;right:10px;top:10px;background:rgba(18,12,32,.78);color:#fff;font-size:12px;font-weight:600;border-radius:20px;padding:3px 10px;opacity:.92;pointer-events:none}
-.lb{position:fixed;inset:0;z-index:100;background:rgba(10,6,20,.92);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,6,20,.97);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
 .lb.on{opacity:1;visibility:visible}
+body.lb-on .flota,body.lb-on .wa-flota{display:none}
 .lb-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;color:#fff}
 .lb-top b{font-size:16px;display:block}.lb-top span{display:block;font-size:13px;color:#B9B4C6}
 .lb-x{background:rgba(255,255,255,.12);border:0;color:#fff;width:42px;height:42px;border-radius:50%;font-size:24px;line-height:1;cursor:pointer;flex:none}
@@ -333,12 +335,24 @@ body>.wrap .ahorro{color:#6ee7a0;background:rgba(37,211,102,.14)}
   <h2 class="rv">Páginas que hemos hecho</h2>
   <p class="subt rv">Negocios reales que ya están en internet con nosotros.</p>
   <div class="obras">
+    <figure class="obra rv"><img src="img/apps/brikx.jpg" alt="BRIKX, página web para brokers de crédito hecha por AGDesign" loading="lazy"><figcaption><b>BRIKX</b><span>Página web para brokers de crédito</span></figcaption></figure>
     <figure class="obra rv"><img src="https://agdesign.agency/wp-content/uploads/2022/12/theorema.jpg" alt="Theorema, página web corporativa hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Theorema</b><span>Página web corporativa</span></figcaption></figure>
     <figure class="obra rv"><img src="https://agdesign.agency/wp-content/uploads/2022/12/publicasa.jpg" alt="Publicasa, página web para inmobiliaria hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Publicasa</b><span>Página web para inmobiliaria</span></figcaption></figure>
     <figure class="obra rv"><img src="https://agdesign.agency/wp-content/uploads/2022/12/edantours.jpg" alt="Edan Tours, página web para agencia de viajes hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Edan Tours</b><span>Página web para agencia de viajes</span></figcaption></figure>
     <figure class="obra rv"><img src="https://agdesign.agency/wp-content/uploads/2022/12/mspazio.png" alt="Mspazio, tienda en línea hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Mspazio</b><span>Tienda en línea</span></figcaption></figure>
     <figure class="obra rv"><img src="https://agdesign.agency/wp-content/uploads/2022/12/neros.jpg" alt="Neros, página web para inmobiliaria hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>Neros</b><span>Página web para inmobiliaria</span></figcaption></figure>
     <figure class="obra rv"><img src="https://agdesign.agency/wp-content/uploads/2022/12/lps.jpg" alt="LPS, página web de servicios hecha por AGDesign" loading="lazy" onerror="this.closest('figure').remove()"><figcaption><b>LPS</b><span>Página web de servicios</span></figcaption></figure>
+  </div>
+  <h2 class="rv" style="margin-top:56px">Sistemas y apps que hemos hecho</h2>
+  <p class="subt rv">Además de páginas, hacemos herramientas a la medida para que tu negocio opere mejor.</p>
+  <div class="obras apps">
+    <figure class="obra rv"><img src="img/apps/tracker-resumen.jpg" alt="Tablero de indicadores comerciales hecho por AGDesign" loading="lazy"><figcaption><b>Tablero comercial</b><span>Indicadores de ventas en tiempo real</span></figcaption></figure>
+    <figure class="obra rv"><img src="img/apps/tracker-numeros.jpg" alt="Detalle de números del tablero comercial hecho por AGDesign" loading="lazy"><figcaption><b>Tablero comercial</b><span>Números por equipo y por semana</span></figcaption></figure>
+    <figure class="obra rv"><img src="img/apps/talento.jpg" alt="Sistema de reclutamiento con inteligencia artificial hecho por AGDesign" loading="lazy"><figcaption><b>Reclutamiento con IA</b><span>Métricas de candidatos y embudo</span></figcaption></figure>
+    <figure class="obra rv"><img src="img/apps/veelo-tablero.jpg" alt="Veelo, app de gestión para estudio hecha por AGDesign" loading="lazy"><figcaption><b>Veelo</b><span>App de gestión para estudio de clases</span></figcaption></figure>
+    <figure class="obra rv"><img src="img/apps/veelo-menu.jpg" alt="Menú de la app Veelo hecha por AGDesign" loading="lazy"><figcaption><b>Veelo</b><span>Reservas, clases, clientes y cobranza</span></figcaption></figure>
+    <figure class="obra rv"><img src="img/apps/zenocar-portal.jpg" alt="Portal de soporte para Zenocar hecho por AGDesign" loading="lazy"><figcaption><b>Zenocar</b><span>Portal de soporte para su equipo</span></figcaption></figure>
+    <figure class="obra rv"><img src="img/apps/hub.jpg" alt="Hub de herramientas internas de HOLOS hecho por AGDesign" loading="lazy"><figcaption><b>HOLOS</b><span>Hub de herramientas internas</span></figcaption></figure>
   </div>
 </div>
 </section>
@@ -638,11 +652,11 @@ body>.wrap .ahorro{color:#6ee7a0;background:rgba(37,211,102,.14)}
     C.textContent = (i + 1) + ' de ' + o.length + (o.length > 1 ? ' · baja para ver la página completa' : '');
     sc.scrollTop = 0;
   }
-  function abre(n) { ultimo = document.activeElement; i = n; pinta(); lb.classList.add('on'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; document.getElementById('lbX').focus(); }
-  function cierra() { lb.classList.remove('on'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (ultimo) ultimo.focus(); }
-  document.querySelector('.obras').addEventListener('click', function (e) {
+  function abre(n) { ultimo = document.activeElement; i = n; pinta(); lb.classList.add('on'); document.body.classList.add('lb-on'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; document.getElementById('lbX').focus(); }
+  function cierra() { lb.classList.remove('on'); document.body.classList.remove('lb-on'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (ultimo) ultimo.focus(); }
+  document.querySelectorAll('.obras').forEach(function (g) { g.addEventListener('click', function (e) {
     var f = e.target.closest('.obra'); if (!f) return; abre(obras().indexOf(f));
-  });
+  }); });
   obras().forEach(function (f) { f.tabIndex = 0; f.setAttribute('role', 'button'); f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abre(obras().indexOf(f)); } }); });
   document.getElementById('lbX').onclick = cierra;
   document.getElementById('lbP').onclick = function () { i--; pinta(); };
