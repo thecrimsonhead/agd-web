@@ -48,6 +48,13 @@ work_css = '''.work{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}@m
 .card{display:block;border-radius:13px;overflow:hidden;border:1px solid var(--line);background:var(--card);text-decoration:none;color:#fff;transition:transform .35s,border-color .35s}.card:hover{transform:translateY(-6px);border-color:rgba(204,34,68,.6)}
 .card .shot{aspect-ratio:16/10;position:relative;overflow:hidden}.card .shot svg{width:100%;height:100%}.card .meta{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;gap:12px}.card h3{font-size:19px;margin:0}.card p{color:var(--mute);font-size:14px;margin:4px 0 0}
 .card .go{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center}.card .go svg{width:16px;height:16px}'''
+
+_ix = camp
+_a = _ix.index('<div class="dgrid">') + len('<div class="dgrid">')
+_b = _ix.index('</div>\n', _ix.index('</a>', _ix.rindex('class="dcard', _a)))
+DEMOS_CARDS = re.sub(r'href="demo/([a-z]+)/"', r'href="https://web.agdesign.agency/demo/\1/" target="_blank" rel="noopener"', _ix[_a:_b])
+DEMOS_CSS = open(os.path.join(R, 'tools', 'demos.css'), encoding='utf-8').read()
+DEMOS_HTML = '<section id="demos" style="padding-top:20px"><div class="wrap"><div class="cen"><span class="label">Demos por giro</span><h2 class="rv">Mira cómo se vería <span class="g">la página de tu negocio</span></h2><p class="sub rv">12 demos reales, listas para celular. La tuya lleva tu nombre, tus fotos y tus servicios.</p></div><div class="dgrid">' + DEMOS_CARDS + '</div></div></section>\n'
 page = f'''<!doctype html>
 <html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AGDesign | Diseño y tecnología para negocios en México</title>
@@ -88,8 +95,8 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 .rv{{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}}.rv.in{{opacity:1;transform:none}}
 .wa{{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;z-index:40;box-shadow:0 10px 24px -6px rgba(37,211,102,.7)}}
 @media(prefers-reduced-motion:reduce){{*{{animation:none!important;transition:none!important}}.rv{{opacity:1;transform:none}}}}
-</style></head><body>
-<header><div class="wrap"><a class="logo" href="#"><img src="img/agd-logo.svg" alt="AGDesign"></a><nav><a class="l" href="#servicios">Servicios</a><a class="l" href="#proyectos">Proyectos</a><a class="l" href="#como">Cómo trabajamos</a><a class="btn sm" href="{WA}">WhatsApp</a></nav></div></header>
+{DEMOS_CSS}</style></head><body>
+<header><div class="wrap"><a class="logo" href="#"><img src="img/agd-logo.svg" alt="AGDesign"></a><nav><a class="l" href="#servicios">Servicios</a><a class="l" href="#proyectos">Proyectos</a><a class="l" href="#demos">Demos</a><a class="l" href="#como">Cómo trabajamos</a><a class="btn sm" href="{WA}">WhatsApp</a></nav></div></header>
 <div class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap"><div>
 <span class="label rv">Estudio de diseño y tecnología</span><h1 class="rv">Hacemos que tu negocio <span class="g">se vea y venda</span> mejor.</h1>
 <p class="rv">Páginas web, sistemas a la medida y marcas para negocios en México. Precios claros, pago en línea y un equipo que te acompaña de principio a fin.</p>
@@ -99,7 +106,7 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 <section id="servicios"><div class="wrap"><div class="cen"><span class="label">Servicios</span><h2 class="rv">Todo lo que tu negocio necesita, <span class="g">con precio claro</span></h2><p class="sub rv">Eliges, pagas en línea y en menos de 24 horas te escribimos para arrancar. Precios más IVA si necesitas factura.</p></div>
 <div class="grid">{''.join(card(s) for s in SVC)}<article class="svc rv" style="justify-content:center;text-align:center"><div class="ic" style="margin:0 auto 16px"><svg viewBox="0 0 48 48"><path d="M10 12h28a4 4 0 014 4v14a4 4 0 01-4 4H22l-8 7v-7h-4a4 4 0 01-4-4V16a4 4 0 014-4z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></div><h3>¿Necesitas otra cosa?</h3><p>Tiendas en línea, automatizaciones, presentaciones o algo a la medida. Platícanos y te decimos cómo lo resolvemos.</p><a class="btn gh" href="{WA}">Escríbenos por WhatsApp</a></article></div></div></section>
 <section id="proyectos" style="padding-top:20px"><div class="wrap"><div class="cen"><span class="label">Proyectos</span><h2 class="rv">Lo que hemos construido</h2><p class="sub rv">Páginas, sistemas y marcas para negocios reales.</p></div><div style="margin-top:36px">{work}</div></div></section>
-<section id="como"><div class="wrap"><div class="cen"><span class="label">Cómo trabajamos</span><h2 class="rv">Sin vueltas, <span class="g">sin juntas eternas</span></h2></div>
+{DEMOS_HTML}<section id="como"><div class="wrap"><div class="cen"><span class="label">Cómo trabajamos</span><h2 class="rv">Sin vueltas, <span class="g">sin juntas eternas</span></h2></div>
 <div class="steps"><div class="rv"><b>Eliges y pagas en línea</b><p>Cada servicio tiene su precio y su botón. Sin cotizaciones que tardan semanas.</p></div><div class="rv"><b>Nos cuentas por WhatsApp</b><p>En menos de 24 horas te escribimos para pedirte lo que necesitamos.</p></div><div class="rv"><b>Entregamos y te acompañamos</b><p>Revisas, pides cambios y lo dejamos funcionando. Seguimos contigo después.</p></div></div>
 <div class="why"><div class="rv"><b>Socios, no proveedores</b><span>Nos importa que te funcione, no solo entregar.</span></div><div class="rv"><b>Rápido</b><span>Tu página en 72 horas; lo demás, con fechas claras.</span></div><div class="rv"><b>Para celular</b><span>Todo lo diseñamos primero para el teléfono.</span></div><div class="rv"><b>Precios claros</b><span>Lo que ves es lo que pagas.</span></div></div></div></section>
 <section style="padding-top:10px"><div class="wrap"><div class="cen"><span class="label">Preguntas frecuentes</span><h2 class="rv">Resolvemos tus dudas</h2></div><div class="faq">{faq}</div></div></section>
