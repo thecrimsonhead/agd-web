@@ -115,6 +115,8 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 <a class="wa" href="{WA}" aria-label="WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg></a>
 <script>(function(){{var io=new IntersectionObserver(function(es){{es.forEach(function(e){{if(e.isIntersecting){{e.target.classList.add('in');io.unobserve(e.target)}}}})}},{{threshold:.06}});document.querySelectorAll('.rv').forEach(function(el){{io.observe(el)}});}})();</script>
 </body></html>'''
+import lightbox
+page = lightbox.fix(page)
 open(os.path.join(R, 'sitio', 'index.html'), 'w', encoding='utf-8').write(page)
 aviso = f'''<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aviso de privacidad | AGDesign</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet"><style>body{{margin:0;background:#080810;color:#ECEAF2;font:300 17px/28px Outfit,sans-serif}}.w{{max-width:760px;margin:0 auto;padding:40px 20px 80px}}h1{{font-weight:700;color:#fff}}h2{{font-weight:600;color:#fff;font-size:20px;margin-top:28px}}a{{color:#FF4D6A}}</style></head><body><div class="w">
