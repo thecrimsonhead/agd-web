@@ -9,7 +9,7 @@ camp = open(os.path.join(R, 'index.html'), encoding='utf-8').read()
 i = camp.index('<div class="work">'); j = camp.index('\n  </div>\n</section>', i)
 work = camp[i:j].replace('src="img/apps/', 'src="img/apps/')
 SVC = [
-  dict(k='web', t='Página web nueva', p='$3,990', pn='campaña, antes $9,990', d='Tu negocio en internet con dominio, hospedaje y 2 correos corporativos el primer año. Lista en 72 horas.',
+  dict(k='web', t='Página web nueva', p='$3,990', pn='campaña, antes $9,990', d='Tu negocio en internet con dominio, hospedaje y 2 correos corporativos el primer año. Lista en 48 horas.',
        inc=['2 páginas y hasta 8 secciones', 'Dominio y hospedaje por 1 año', '2 correos con tu dominio', 'Hecha para celular y Google'],
        pay=CAMP, btn='Ver demos y apartar', tag='Más pedido'),
   dict(k='reno', t='Renovación de sitio', p='$3,990', pn='pago único', d='Si tu sitio es viejo o lento no lo parchamos: lo rehacemos desde cero con diseño actual y lo pasamos a nuestro hospedaje.',
@@ -60,7 +60,7 @@ page = f'''<!doctype html>
 <title>AGDesign | Diseño y tecnología para negocios en México</title>
 <meta name="description" content="Páginas web, renovación de sitios, web apps a la medida, creación y registro de marca. Precios claros y pago en línea.">
 <meta property="og:title" content="AGDesign | Diseño y tecnología para negocios"><meta property="og:url" content="https://agdesign.agency/"><meta name="theme-color" content="#080810">
-<link rel="icon" href="img/agd-logo.svg"><link rel="canonical" href="https://agdesign.agency/">
+<link rel="icon" href="img/agd-logo.svg"><link rel="canonical" href="https://agdesign.agency/"><script type="application/ld+json">{{"@context":"https://schema.org","@type":"ProfessionalService","name":"AGDesign","url":"https://agdesign.agency","logo":"https://agdesign.agency/img/agd-logo.svg","areaServed":"MX","address":{{"@type":"PostalAddress","addressLocality":"Ciudad de México","addressCountry":"MX"}},"makesOffer":[{{"@type":"Offer","name":"Página web para tu negocio","price":"3990","priceCurrency":"MXN","url":"https://web.agdesign.agency/"}}]}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{{--bg:#080810;--card:#12121C;--line:rgba(255,255,255,.09);--mute:#A7A6AD;--rojo:#FF4D6A;--mor:#A575E0;--btn:linear-gradient(135deg,#4F2474,#CC2244);--grad:linear-gradient(90deg,#FF4D6A,#A575E0)}}
@@ -100,7 +100,7 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 <div class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap"><div>
 <span class="label rv">Estudio de diseño y tecnología</span><h1 class="rv">Hacemos que tu negocio <span class="g">se vea y venda</span> mejor.</h1>
 <p class="rv">Páginas web, sistemas a la medida y marcas para negocios en México. Precios claros, pago en línea y un equipo que te acompaña de principio a fin.</p>
-<div class="ctas rv"><a class="btn" href="#servicios">Ver servicios &rarr;</a><a class="btn gh" href="{CAMP}">Página web en 72 h por $3,990</a></div></div>
+<div class="ctas rv"><a class="btn" href="#servicios">Ver servicios &rarr;</a><a class="btn gh" href="{CAMP}">Página web en 48 h por $3,990</a></div></div>
 <div class="orb rv" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><div class="core"><img src="img/agd-logo.svg" alt=""></div>
 ''' + ''.join(f'<div class="it" style="left:{x}%;top:{y}%;animation-delay:-{k}s"><svg viewBox="0 0 48 48">{ICON[s["k"]]}</svg><span>{E(s["t"].split(" de ")[0] if s["k"]!="web" else "Páginas web")}</span></div>' for k, (s, (x, y)) in enumerate(zip(SVC, [(50, 6), (93, 38), (78, 88), (22, 88), (7, 38)]))) + f'''</div></div></div>
 <section id="servicios"><div class="wrap"><div class="cen"><span class="label">Servicios</span><h2 class="rv">Todo lo que tu negocio necesita, <span class="g">con precio claro</span></h2><p class="sub rv">Eliges, pagas en línea y en menos de 24 horas te escribimos para arrancar. Precios más IVA si necesitas factura.</p></div>
@@ -108,7 +108,7 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 <section id="proyectos" style="padding-top:20px"><div class="wrap"><div class="cen"><span class="label">Proyectos</span><h2 class="rv">Lo que hemos construido</h2><p class="sub rv">Páginas, sistemas y marcas para negocios reales.</p></div><div style="margin-top:36px">{work}</div></div></section>
 {DEMOS_HTML}<section id="como"><div class="wrap"><div class="cen"><span class="label">Cómo trabajamos</span><h2 class="rv">Sin vueltas, <span class="g">sin juntas eternas</span></h2></div>
 <div class="steps"><div class="rv"><b>Eliges y pagas en línea</b><p>Cada servicio tiene su precio y su botón. Sin cotizaciones que tardan semanas.</p></div><div class="rv"><b>Nos cuentas por WhatsApp</b><p>En menos de 24 horas te escribimos para pedirte lo que necesitamos.</p></div><div class="rv"><b>Entregamos y te acompañamos</b><p>Revisas, pides cambios y lo dejamos funcionando. Seguimos contigo después.</p></div></div>
-<div class="why"><div class="rv"><b>Socios, no proveedores</b><span>Nos importa que te funcione, no solo entregar.</span></div><div class="rv"><b>Rápido</b><span>Tu página en 72 horas; lo demás, con fechas claras.</span></div><div class="rv"><b>Para celular</b><span>Todo lo diseñamos primero para el teléfono.</span></div><div class="rv"><b>Precios claros</b><span>Lo que ves es lo que pagas.</span></div></div></div></section>
+<div class="why"><div class="rv"><b>Socios, no proveedores</b><span>Nos importa que te funcione, no solo entregar.</span></div><div class="rv"><b>Rápido</b><span>Tu página en 48 horas; lo demás, con fechas claras.</span></div><div class="rv"><b>Para celular</b><span>Todo lo diseñamos primero para el teléfono.</span></div><div class="rv"><b>Precios claros</b><span>Lo que ves es lo que pagas.</span></div></div></div></section>
 <section style="padding-top:10px"><div class="wrap"><div class="cen"><span class="label">Preguntas frecuentes</span><h2 class="rv">Resolvemos tus dudas</h2></div><div class="faq">{faq}</div></div></section>
 <section style="padding-top:10px"><div class="wrap"><div class="final rv"><h2>¿Arrancamos?</h2><p class="sub" style="margin:0 auto 22px;color:#ECEAF2">Elige tu servicio, págalo en línea y llena tu cuestionario. Nosotros hacemos el resto.</p><a class="btn" href="https://web.agdesign.agency/pagar/#pagar">Paga y llena tu cuestionario &rarr;</a></div></div></section>
 <footer><div class="wrap"><img src="img/agd-logo.svg" alt="AGDesign"><span>&copy; 2026 AGDesign. Creado con amor por AGDesign.</span><a href="aviso-de-privacidad/">Aviso de privacidad</a></div></footer>

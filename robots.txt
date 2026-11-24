@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /cuestionario/
+Sitemap: https://web.agdesign.agency/sitemap.xml
