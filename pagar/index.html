@@ -463,8 +463,8 @@ body.lb-on .flota,body.lb-on .wa-flota{display:none}
     <div id="listo" hidden class="fin">
       <div class="chk">&#10003;</div>
       <h3>Pago recibido</h3>
-      <p>Gracias. En unos minutos te escribimos por WhatsApp para pedirte tu información y empezar tu página.</p>
-      <a class="btn sec wa-link" href="#" target="_blank" rel="noopener">Escribirnos ya</a>
+      <p>Gracias. Ahora llena el cuestionario de tu página (unos 4 minutos) y empezamos. En 72 horas te mandamos la vista previa.</p>
+      <a class="btn" id="cuest" href="../cuestionario/">Llenar mi cuestionario &rarr;</a>
     </div>
   </div>
 
@@ -618,6 +618,9 @@ body.lb-on .flota,body.lb-on .wa-flota{display:none}
                 if (r && r.ok) {
                   paso2.hidden = true;
                   document.getElementById('listo').hidden = false;
+                  var cu = '../cuestionario/?' + new URLSearchParams({ ref: ref, n: datos.nombre || '', neg: datos.negocio || '', w: datos.whatsapp || '', e: datos.email || '' }).toString();
+                  document.getElementById('cuest').href = cu;
+                  setTimeout(function () { location.href = cu; }, 3500);
                   pagado = true; flotaVer();
                   try { sessionStorage.removeItem('agd_ref'); } catch (e) {}
                   return;

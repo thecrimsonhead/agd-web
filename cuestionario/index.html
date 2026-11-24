@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cuestionario de tu página | AGDesign</title>
+<meta name="description" content="Cuéntanos de tu negocio para empezar tu página web.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/agd-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#080810;--char:#12121C;--violet:#4F2474;--iris:#CC2244;--lav:#ECEAF2;--white:#fff;--mut:#A7A6AD}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--lav);font:400 18px/1.5 Outfit,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Outfit,sans-serif;color:var(--white);letter-spacing:-.01em}
+a{color:var(--lav)}
+/* background art */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg svg{position:absolute;width:100%;height:100%}
+.orb{transform-origin:center;animation:float 14s ease-in-out infinite}
+.orb.b{animation-duration:19s;animation-direction:reverse}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.draw{stroke-dasharray:6 10;animation:dash 6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-160}}
+@media (prefers-reduced-motion:reduce){.orb,.spin,.draw,.scr.anim{animation:none!important}}
+/* chrome */
+.prog{position:fixed;top:0;left:0;right:0;height:4px;background:rgba(255,255,255,.07);z-index:6}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--iris));transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.top{position:fixed;top:0;left:0;right:0;z-index:5;padding:20px 0;background:linear-gradient(var(--ink) 55%,rgba(8,8,16,0))}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.top img{height:34px;width:auto}
+.count{font-size:14px;color:var(--mut)}
+.stage{position:relative;z-index:1;min-height:100%;display:flex;align-items:center;padding:100px 0 130px}
+.scr{max-width:720px;margin:0 auto;padding:0 22px;width:100%}
+.layout .stage{padding-left:0;padding-right:0}
+.scr.anim{animation:in .5s cubic-bezier(.2,.7,.2,1) both}
+.scr.anim.rev{animation-name:inr}
+@keyframes in{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes inr{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:none}}
+.k{display:inline-flex;align-items:center;gap:8px;font:600 13px Outfit,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:#FF4D6A;margin-bottom:16px}
+.k b{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:var(--violet);color:#fff;font-size:12px;letter-spacing:0}
+.scr h1{font-size:clamp(34px,5.6vw,58px);line-height:1.06;font-weight:800}
+.scr h1 em{font-style:normal;background:linear-gradient(90deg,#FF4D6A,var(--iris));-webkit-background-clip:text;background-clip:text;color:transparent}
+.scr h2{font-size:clamp(24px,3.8vw,36px);line-height:1.2;font-weight:700}
+.sub{color:#c9c6dc;font-size:19px;margin-top:16px;max-width:56ch}
+.hint{color:var(--mut);font-size:16px;margin-top:10px}
+.f{display:grid;gap:16px;margin-top:28px}
+.f label{display:grid;gap:6px;color:#c9c6dc;font-size:15px}
+input,textarea{width:100%;font:500 20px Outfit,sans-serif;color:#fff;background:transparent;border:0;border-bottom:2px solid rgba(225,223,242,.25);padding:10px 2px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--iris)}
+input::placeholder,textarea::placeholder{color:rgba(225,223,242,.35)}
+textarea{min-height:110px;resize:vertical;border:2px solid rgba(225,223,242,.18);border-radius:14px;padding:14px 16px;font-size:18px}
+.opts{display:grid;gap:10px;margin-top:24px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:500 17px/1.35 Outfit,sans-serif;color:#fff;background:rgba(255,255,255,.04);border:1.5px solid rgba(225,223,242,.2);border-radius:14px;padding:14px 16px;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.opt:hover{border-color:rgba(165,117,224,.8);background:rgba(165,117,224,.12)}
+.opt:active{transform:scale(.99)}
+.opt kbd{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;border:1.5px solid rgba(225,223,242,.35);font:700 13px Outfit,sans-serif;color:var(--lav)}
+.opt.sel{background:linear-gradient(90deg,var(--violet),var(--iris));border-color:transparent}
+.opt.sel kbd{background:#fff;color:var(--violet);border-color:#fff}
+.btnrow{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 16px Outfit,sans-serif;color:#fff;background:linear-gradient(90deg,var(--violet),var(--iris));border:0;border-radius:12px;padding:15px 26px;cursor:pointer;box-shadow:0 10px 30px -10px rgba(204,34,68,.8);transition:transform .15s,box-shadow .15s}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 14px 34px -10px rgba(204,34,68,.95)}
+.btn:disabled{opacity:.4;cursor:default;box-shadow:none}
+.enter{font-size:14px;color:var(--mut)}
+.skip{background:none;border:0;color:var(--mut);font:500 15px Outfit,sans-serif;text-decoration:underline;cursor:pointer}
+.err{color:#ffb3c4;font-size:15px;min-height:1em}
+.nav{position:fixed;left:0;right:0;bottom:0;padding:16px 0;background:linear-gradient(rgba(8,8,16,0),var(--ink) 45%);z-index:5}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center}
+.arr{display:flex;gap:8px;flex:1;justify-content:flex-end}
+.arr button{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.05);border:1.5px solid rgba(225,223,242,.22);color:#fff;font:700 18px Outfit,sans-serif;cursor:pointer}
+.arr button:hover:not(:disabled){border-color:var(--iris)}
+.arr button:disabled{opacity:.3;cursor:default}
+.art{display:block;width:120px;height:120px;margin-bottom:22px}
+.steps{display:grid;gap:12px;margin-top:28px}
+.steps div{display:flex;gap:14px;align-items:flex-start;color:#c9c6dc}
+.steps b{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(165,117,224,.2);border:1px solid rgba(165,117,224,.6);color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px Outfit,sans-serif}
+.check path{stroke-dasharray:60;stroke-dashoffset:60;animation:chk .7s .3s ease forwards}
+@keyframes chk{to{stroke-dashoffset:0}}
+.ring{transform-origin:60px 60px;animation:spin 12s linear infinite}
+@media (max-width:640px){
+  body{font-size:17px}
+  .opts.two{grid-template-columns:1fr}
+  .stage{align-items:flex-start;padding-top:96px}
+  .nav .tip{display:none}
+  input{font-size:18px}
+}
+
+/* background blobs */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(30px)}
+.bg i:nth-child(1){width:70vmax;height:70vmax;left:40%;top:-30%;background:radial-gradient(circle,rgba(204,34,68,.32),transparent 62%);animation:d1 18s ease-in-out infinite alternate}
+.bg i:nth-child(2){width:60vmax;height:60vmax;left:-25%;top:40%;background:radial-gradient(circle,rgba(165,117,224,.24),transparent 62%);animation:d2 22s ease-in-out infinite alternate}
+.bg i:nth-child(3){width:40vmax;height:40vmax;left:30%;top:55%;background:radial-gradient(circle,rgba(225,10,30,.14),transparent 62%);animation:d3 15s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(-30vw,25vh) scale(1.2)}}@keyframes d2{to{transform:translate(35vw,-20vh) scale(.85)}}@keyframes d3{to{transform:translate(-20vw,-35vh) scale(1.3)}}
+/* layout with live preview */
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:1fr;min-height:100%}
+.pv{display:none}
+@media (min-width:1080px){
+  .layout{grid-template-columns:minmax(0,1fr) 440px;gap:40px;max-width:1240px;margin:0 auto;padding:0 32px}
+  .layout .stage .scr{margin:0;max-width:640px}
+  .pv{display:flex;flex-direction:column;justify-content:center;position:sticky;top:0;height:100vh;padding:90px 0 40px}
+  .pv h6{font:600 12px Outfit,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#FF4D6A;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .pv h6 i{width:8px;height:8px;border-radius:50%;background:#7be08f;box-shadow:0 0 0 4px rgba(123,224,143,.2);animation:pulse 1.6s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 8px rgba(123,224,143,0)}}
+  .pvf{border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 30px 80px -40px rgba(204,34,68,.7);transform:rotate(1.5deg);transition:transform .5s}
+  .pvf:hover{transform:none}
+  .pvbar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#17141f}
+  .pvbar b{width:9px;height:9px;border-radius:50%;background:#3a3646}
+  .pvbar span{margin-left:8px;font-size:11.5px;color:#a6a3bd;background:#221e2c;padding:3px 10px;border-radius:7px;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pvn{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font:700 14px Outfit,sans-serif;color:#15141c}
+  .pvn i{width:16px;height:2px;background:#15141c;box-shadow:0 5px 0 #15141c,0 -5px 0 #15141c}
+  .pvh{position:relative;aspect-ratio:16/10;background:#2a2240 center/cover;transition:background-image .5s}
+  .pvh:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.05) 70%)}
+  .pvh div{position:absolute;left:16px;right:16px;bottom:14px;z-index:1}
+  .pvh em{display:inline-block;font:700 9.5px Outfit,sans-serif;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--violet);padding:4px 8px;border-radius:999px;margin-bottom:8px}
+  .pvh strong{display:block;font:700 20px/1.15 Outfit,sans-serif;color:#fff}
+  .pvb{padding:14px 16px 18px}
+  .pvb p{font-size:13px;line-height:1.45;color:#5d5b6c;min-height:38px}
+  .pvb span{display:inline-block;margin-top:12px;padding:9px 16px;border-radius:9px;font:700 12px Outfit,sans-serif;color:#fff;background:var(--violet)}
+  .pv small{display:block;margin-top:16px;color:var(--mut);font-size:13px}
+  .flash{animation:fl .6s}
+  @keyframes fl{0%{box-shadow:0 0 0 0 rgba(165,117,224,.7)}100%{box-shadow:0 0 0 14px rgba(165,117,224,0)}}
+}
+
+@media (min-width:1080px){.top .wrap,.nav .wrap{max-width:1240px;padding:0 32px}}
+@media (hover:none),(max-width:640px){.enter{display:none}}
+/* mobile preview: button + sheet */
+.arr .pvbtn{width:auto}
+.pvbtn{display:none;margin-right:auto;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1.5px solid rgba(225,223,242,.22);color:#fff;border-radius:12px;height:46px;padding:0 14px;font:600 14px Outfit,sans-serif;cursor:pointer}
+.pvbtn i{width:8px;height:8px;border-radius:50%;background:#7be08f}
+@media (max-width:1079px){
+  .pvbtn{display:inline-flex}
+  .pv.open{display:flex;flex-direction:column;justify-content:center;position:fixed;inset:0;z-index:20;padding:24px;background:rgba(8,8,16,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .pv.open .pvf{border-radius:18px;overflow:hidden;background:#fff;max-width:420px;margin:0 auto;width:100%}
+  .pv.open h6,.pv.open small{max-width:420px;margin-left:auto;margin-right:auto;width:100%}
+  .pv.open h6{font:600 12px Outfit,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#FF4D6A;margin-bottom:12px}
+  .pv.open small{display:block;margin-top:14px;color:var(--mut);font-size:13px}
+  .pv.open .pvbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#17141f}.pv.open .pvbar b{width:8px;height:8px;border-radius:50%;background:#3a3646}.pv.open .pvbar span{margin-left:8px;font-size:11px;color:#a6a3bd}
+  .pv.open .pvn{display:flex;justify-content:space-between;padding:11px 14px;font:700 14px Outfit,sans-serif;color:#15141c}
+  .pv.open .pvh{position:relative;aspect-ratio:16/10;background:#2a2240 center/cover}
+  .pv.open .pvh:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent 70%)}
+  .pv.open .pvh div{position:absolute;left:14px;right:14px;bottom:12px;z-index:1}
+  .pv.open .pvh em{display:inline-block;font:700 9px Outfit,sans-serif;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--violet);padding:4px 8px;border-radius:999px;margin-bottom:6px}
+  .pv.open .pvh strong{display:block;font:700 18px/1.15 Outfit,sans-serif;color:#fff}
+  .pv.open .pvb{padding:12px 14px 16px}.pv.open .pvb p{font-size:13px;color:#5d5b6c}
+  .pv.open .pvb span{display:inline-block;margin-top:10px;padding:8px 14px;border-radius:9px;font:700 12px Outfit,sans-serif;color:#fff;background:var(--violet)}
+  .pvclose{display:block;margin:18px auto 0;background:#fff;color:#15141c;border:0;border-radius:12px;padding:12px 22px;font:700 14px Outfit,sans-serif}
+}
+@media (min-width:1080px){.pvclose{display:none}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="prog"><i id="barra"></i></div>
+<header class="top"><div class="wrap"><img src="../img/agd-logo.svg" alt="AGDesign"><span class="count" id="count"></span></div></header>
+<div class="layout"><main class="stage"><div id="root" style="width:100%"></div></main>
+<aside class="pv" id="pv"><h6><i></i>Así va tu página</h6>
+  <div class="pvf" id="pvf"><div class="pvbar"><b></b><b></b><b></b><span id="pvu">tunegocio.com</span></div>
+  <div class="pvn"><span id="pvn">Tu negocio</span><i></i></div>
+  <div class="pvh" id="pvh"><div><em id="pvt">Tu giro</em><strong id="pvs">Aquí va tu título</strong></div></div>
+  <div class="pvb"><p id="pvp">Cuéntanos qué haces y lo escribimos para tus clientes.</p><span id="pvc">Contáctanos</span></div></div>
+  <small>Es un boceto. Nosotros diseñamos la página real.</small><button type="button" class="pvclose" id="pvclose">Volver a las preguntas</button></aside></div>
+<nav class="nav" id="nav" hidden><div class="wrap"><span class="count tip">AGDesign · cuestionario de tu página</span><div class="arr"><button type="button" class="pvbtn" id="pvbtn"><i></i>Vista previa</button><button type="button" id="atras" aria-label="Anterior">&#8593;</button><button type="button" id="sig" aria-label="Siguiente">&#8595;</button></div></div></nav>
+
+<script>
+(function () {
+  var API = 'https://n8n.srv2032280.hstgr.cloud/webhook/agd-cuestionario';
+  var qs = new URLSearchParams(location.search);
+  var SID = (qs.get('ref') || qs.get('session_id') || '').replace(/[^A-Za-z0-9_]/g, '').slice(0, 120);
+  var T = (qs.get('t') || 'web').replace(/[^a-z]/g, '').slice(0, 20);
+  var KEY = 'agd_cuestionario_v1_' + (SID || 'x');
+
+  /* Question types: t text, e email, p phone, l long text, u single choice, m multiple choice */
+  var Q = [
+    { id: 'name', t: 't', q: 'Para empezar, ¿cómo te llamas?', ph: 'Ana López', ac: 'name' },
+    { id: 'email', t: 'e', q: '¿A qué correo te escribimos?', h: 'Ahí te mandamos la vista previa de tu página.', ph: 'ana@tunegocio.com', ac: 'email' },
+    { id: 'phone', t: 'p', q: '¿Tu WhatsApp?', h: 'Solo para dudas rápidas de tu página.', ph: '55 1234 5678', ac: 'tel' },
+    { id: 'business', t: 't', q: '¿Cómo se llama tu negocio?', ph: 'Estética Ana', ac: 'organization' },
+    { id: 'industry', t: 'u', q: '¿Qué tipo de negocio es?',
+      o: ['Restaurante o cafetería', 'Salud (dentista, consultorio, óptica)', 'Belleza y estética', 'Veterinaria o mascotas', 'Taller o refaccionaria', 'Tienda o comercio', 'Servicios profesionales', 'Otro'], two: true },
+    { id: 'about', t: 'l', q: 'En pocas líneas, ¿qué haces y para quién?', h: 'Escríbelo como se lo explicarías a un cliente nuevo.', ph: 'Cortes, color y uñas para mujeres en la colonia Del Valle...' },
+    { id: 'city', t: 't', q: '¿Dónde estás o qué zona atiendes?', ph: 'Col. Del Valle, CDMX' },
+    { id: 'services', t: 'l', q: '¿Cuáles son tus principales servicios o productos?', h: 'En orden de importancia. Los precios son opcionales.', ph: '1. Corte de cabello\n2. Tinte\n3. Uñas' },
+    { id: 'hours', t: 't', q: '¿Cuál es tu horario?', ph: 'Lun a Sáb de 10:00 a 19:00', opt: true },
+    { id: 'goal', t: 'u', q: '¿Qué es lo más importante que haga tu página?',
+      o: ['Que me escriban por WhatsApp', 'Que agenden una cita', 'Que me llamen', 'Que pidan una cotización', 'Que vendan en línea', 'Mostrar mi trabajo y dar confianza'] },
+    { id: 'current', t: 't', q: '¿Tienes redes sociales o página actual?', h: 'Pega las ligas. Déjalo vacío si no tienes.', ph: 'instagram.com/tunegocio', opt: true },
+    { id: 'logo', t: 'u', q: '¿Tienes logo?', o: ['Sí, ya tengo', 'No, háganme uno sencillo', 'Tengo, pero quiero renovarlo'] },
+    { id: 'colors', t: 't', q: '¿Algún color o estilo que debamos seguir?', h: 'Por ejemplo: rosa y dorado, limpio y moderno.', ph: 'Rosa, blanco, elegante', opt: true },
+    { id: 'photos', t: 'u', q: '¿Y las fotos?', o: ['Tengo fotos propias', 'Usen fotos profesionales de stock', 'Una mezcla de las dos'] },
+    { id: 'domain', t: 'u', q: '¿Ya tienes dominio (como tunegocio.com)?', o: ['Sí, ya tengo', 'No, quiero uno nuevo (incluido)'] },
+    { id: 'domain_name', t: 't', q: '¿Cuál es, o cuál te gustaría?', h: 'Si está ocupado, te proponemos opciones parecidas.', ph: 'esteticaana.com', opt: true },
+    { id: 'likes', t: 'l', q: '¿Alguna página que te guste cómo se ve?', h: 'De la competencia o cualquiera. Dinos qué te gusta.', ph: 'ejemplo.com, me gustan las fotos grandes', opt: true },
+    { id: 'files', t: 't', q: 'Comparte tu logo y tus fotos', h: 'Pega una liga de Google Drive, Dropbox o iCloud. Si no tienes, al terminar mándalos por WhatsApp al 663 541 9838.', ph: 'drive.google.com/...', opt: true },
+    { id: 'notes', t: 'l', q: '¿Algo más que debamos saber?', ph: 'Promociones, cosas que no quieres, etc.', opt: true }
+  ];
+
+  var root = document.getElementById('root'), st = { r: {}, i: -1 }, dir = 1, L = 'ABCDEFGH';
+  try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && s.r && !s.done) st = s; } catch (e) {}
+  [['n', 'name'], ['e', 'email'], ['w', 'phone'], ['neg', 'business']].forEach(function (p) { var v = (qs.get(p[0]) || '').slice(0, 120); if (v && !st.r[p[1]]) st.r[p[1]] = v; });
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+  var esc = function (t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
+  function valid(q, v) {
+    v = (v || '').trim();
+    if (!v) return !!q.opt;
+    if (q.t === 'e') return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if (q.t === 'p') return v.replace(/\D/g, '').length >= 10;
+    return true;
+  }
+  function vis() { return Q.filter(function (q) { return q.id !== 'domain_name' || st.r.domain; }); }
+  function progress() {
+    pv();
+    var P = vis(), n = P.filter(function (q) { return (st.r[q.id] || '').length; }).length;
+    document.getElementById('barra').style.width = (st.i >= P.length ? 100 : 100 * n / P.length) + '%';
+    document.getElementById('count').textContent = st.i >= 0 && st.i < P.length ? (st.i + 1) + ' / ' + P.length : '';
+    document.getElementById('nav').hidden = !(st.i >= 0 && st.i < P.length);
+    document.getElementById('atras').disabled = st.i <= 0;
+    var q = P[st.i]; document.getElementById('sig').disabled = !q || !valid(q, st.r[q.id]);
+  }
+
+  /* live preview */
+  var IMG = { 'Restaurante o cafetería': '1565895405227-31cffbe0cf86', 'Salud (dentista, consultorio, óptica)': '1629909613654-28e377c37b09', 'Belleza y estética': '1580618672591-eb180b1a973f',
+    'Veterinaria o mascotas': '1753164726626-e4c38056a03f', 'Taller o refaccionaria': '1676210134190-3f2c0d5cf58d', 'Tienda o comercio': '1753161618091-b4cf35b9aa99', 'Servicios profesionales': '1753351052363-53ce102830eb', 'Otro': '1753164726626-e4c38056a03f' };
+  var CTA = { 'Que me escriban por WhatsApp': 'Escríbenos por WhatsApp', 'Que agenden una cita': 'Agenda tu cita', 'Que me llamen': 'Llámanos', 'Que pidan una cotización': 'Pide tu cotización', 'Que vendan en línea': 'Compra aquí', 'Mostrar mi trabajo y dar confianza': 'Mira nuestro trabajo' };
+  var pvLast = '';
+  function pv() {
+    var g = function (id) { return document.getElementById(id); }; if (!g('pvf')) return;
+    var r = st.r, biz = (r.business || '').trim(), key = JSON.stringify([biz, r.industry, r.about, r.goal, r.city, r.services, r.domain_name]);
+    if (key === pvLast) return; pvLast = key;
+    g('pvn').textContent = biz || 'Tu negocio';
+    var dom = (r.domain_name || '').trim() || (biz ? biz.toLowerCase().normalize('NFD').replace(/[^a-z0-9]+/g, '') + '.com' : 'tunegocio.com'); g('pvu').textContent = dom;
+    g('pvt').textContent = r.industry ? r.industry.split(' (')[0] : 'Tu giro';
+    var first = (r.services || '').split(/\n|,/)[0].replace(/^\s*\d+[.)]\s*/, '').trim();
+    g('pvs').textContent = biz ? (first ? first + (r.city ? ' en ' + r.city.split(',')[0] : '') : biz + (r.city ? ', ' + r.city.split(',')[0] : '')) : 'Aquí va tu título';
+    g('pvp').textContent = (r.about || '').trim().slice(0, 140) || 'Cuéntanos qué haces y lo escribimos para tus clientes.';
+    g('pvc').textContent = CTA[r.goal] || 'Contáctanos';
+    if (r.industry && IMG[r.industry]) g('pvh').style.backgroundImage = 'url(https://images.unsplash.com/photo-' + IMG[r.industry] + '?auto=format&fit=crop&w=900&q=70)';
+    var f = g('pvf'); f.classList.remove('flash'); void f.offsetWidth; f.classList.add('flash');
+  }
+  function show(html) {
+    root.innerHTML = '<div class="scr anim' + (dir < 0 ? ' rev' : '') + '">' + html + '</div>';
+    progress(); scrollTo(0, 0);
+  }
+
+  function intro() {
+    st.i = -1; save();
+    show('<svg class="art" viewBox="0 0 120 120" aria-hidden="true"><g class="ring"><circle cx="60" cy="60" r="54" fill="none" stroke="#CC2244" stroke-width="2" stroke-dasharray="4 8"/></g>' +
+      '<rect x="30" y="34" width="60" height="46" rx="6" fill="#4F2474"/><rect x="30" y="34" width="60" height="10" rx="5" fill="#CC2244"/>' +
+      '<circle cx="37" cy="39" r="2" fill="#e1dff2"/><circle cx="43" cy="39" r="2" fill="#e1dff2"/><rect x="38" y="52" width="26" height="5" rx="2.5" fill="#fff"/><rect x="38" y="62" width="40" height="4" rx="2" fill="#e1dff2" opacity=".6"/><rect x="38" y="70" width="18" height="4" rx="2" fill="#e1dff2" opacity=".6"/><path d="M52 86h16l-3 8H55z" fill="#CC2244"/></svg>' +
+      '<span class="k">' + (SID ? 'Pago recibido &middot; gracias' : 'Cuestionario de tu página') + '</span>' +
+      '<h1>Hagamos tu <em>página web.</em></h1>' +
+      '<p class="sub">Contesta unas preguntas rápidas de tu negocio. Son unos 4 minutos y es todo lo que necesitamos para empezar a diseñar.</p>' +
+      '<div class="steps"><div><b>1</b><span>Nos cuentas de tu negocio (ahora).</span></div><div><b>2</b><span>Diseñamos tu página y en 72 horas te mandamos la vista previa.</span></div><div><b>3</b><span>Nos pides cambios y la publicamos con tu dominio, hospedaje y correos incluidos.</span></div></div>' +
+      '<div class="btnrow"><button class="btn" id="go">Empezar &rarr;</button><span class="enter">presiona <b>Enter &#8629;</b></span></div>');
+    var go = document.getElementById('go'); go.onclick = function () { dir = 1; pregunta(0); }; go.focus();
+  }
+
+  function pregunta(i) {
+    var P = vis(); if (i >= P.length) return enviar();
+    st.i = i; save();
+    var q = P[i], v = st.r[q.id] || '', html = '<span class="k"><b>' + (i + 1) + '</b>' + (q.opt ? 'Opcional' : 'Pregunta') + '</span><h2>' + esc(q.q) + '</h2>' + (q.h ? '<p class="hint">' + esc(q.h) + '</p>' : '');
+    if (q.t === 'u' || q.t === 'm') {
+      html += '<div class="opts' + (q.two ? ' two' : '') + '">' + q.o.map(function (o, k) {
+        return '<button type="button" class="opt' + (v === o ? ' sel' : '') + '" data-o="' + esc(o) + '"><kbd>' + L[k] + '</kbd>' + esc(o) + '</button>';
+      }).join('') + '</div><p class="err" id="err"></p>';
+    } else {
+      html += '<div class="f">' + (q.t === 'l'
+        ? '<textarea id="in" placeholder="' + esc(q.ph || '') + '">' + esc(v) + '</textarea>'
+        : '<input id="in" type="' + ({ e: 'email', p: 'tel' }[q.t] || 'text') + '" autocomplete="' + (q.ac || 'off') + '" placeholder="' + esc(q.ph || '') + '" value="' + esc(v) + '">') +
+        '</div><p class="err" id="err"></p><div class="btnrow"><button class="btn" id="ok">OK &#10003;</button>' +
+        (q.opt ? '<button class="skip" id="skip" type="button">Saltar</button>' : '') +
+        '<span class="enter">' + (q.t === 'l' ? 'Shift + Enter para otra línea' : 'presiona <b>Enter &#8629;</b>') + '</span></div>';
+    }
+    show(html);
+    if (q.t === 'u' || q.t === 'm') {
+      root.querySelectorAll('.opt').forEach(function (b) {
+        b.onclick = function () {
+          root.querySelectorAll('.opt').forEach(function (x) { x.classList.remove('sel'); });
+          b.classList.add('sel'); st.r[q.id] = b.getAttribute('data-o'); save(); progress();
+          setTimeout(function () { dir = 1; pregunta(i + 1); }, 320);
+        };
+      });
+    } else {
+      var inp = document.getElementById('in');
+      inp.oninput = function () { st.r[q.id] = inp.value; save(); progress(); document.getElementById('err').textContent = ''; };
+      inp.onkeydown = function (e) { if (e.key === 'Enter' && !(q.t === 'l' && e.shiftKey)) { e.preventDefault(); next(); } };
+      document.getElementById('ok').onclick = next;
+      var sk = document.getElementById('skip'); if (sk) sk.onclick = function () { st.r[q.id] = ''; save(); dir = 1; pregunta(i + 1); };
+      setTimeout(function () { inp.focus(); }, 60);
+    }
+    function next() {
+      st.r[q.id] = (st.r[q.id] || '').trim();
+      if (!valid(q, st.r[q.id])) {
+        document.getElementById('err').textContent = !st.r[q.id] ? 'Llena este dato.' : q.t === 'e' ? 'Revisa tu correo.' : q.t === 'p' ? 'Pon tu WhatsApp a 10 dígitos.' : 'Revisa este dato.';
+        return;
+      }
+      save(); dir = 1; pregunta(i + 1);
+    }
+  }
+
+  document.getElementById('pvbtn').onclick = function () { pv(); document.getElementById('pv').classList.add('open'); };
+  document.getElementById('pvclose').onclick = function () { document.getElementById('pv').classList.remove('open'); };
+  document.getElementById('atras').onclick = function () { if (st.i > 0) { dir = -1; pregunta(st.i - 1); } };
+  document.getElementById('sig').onclick = function () { var q = vis()[st.i]; if (q && valid(q, st.r[q.id])) { dir = 1; pregunta(st.i + 1); } };
+  document.addEventListener('keydown', function (e) {
+    var q = vis()[st.i];
+    if (st.i === -1 && e.key === 'Enter') { var g = document.getElementById('go'); if (g) { e.preventDefault(); g.click(); } }
+    if (q && (q.t === 'u') && /^[a-h]$/i.test(e.key) && document.activeElement.tagName !== 'INPUT') {
+      var b = root.querySelectorAll('.opt')[L.indexOf(e.key.toUpperCase())]; if (b) b.click();
+    }
+  });
+
+  function enviar() {
+    st.i = vis().length; save();
+    show('<span class="k">Ya casi</span><h2>Enviando tus respuestas&hellip;</h2>');
+    var payload = { ref: SID, tipo: T, respuestas: st.r, pagina: location.href.split('?')[0], enviado: new Date().toISOString() };
+    var intento = 0;
+    (function go() {
+      fetch(API, { method: 'POST', body: new URLSearchParams({ data: JSON.stringify(payload) }) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); listo(); })
+        .catch(function () {
+          if (++intento < 3) return setTimeout(go, 1500 * intento);
+          show('<span class="k">Problema de conexión</span><h2>No pudimos enviar tus respuestas.</h2><p class="sub">Están guardadas en este dispositivo. Intenta otra vez.</p><div class="btnrow"><button class="btn" id="re">Intentar otra vez</button></div>');
+          document.getElementById('re').onclick = function () { intento = 0; go(); };
+        });
+    })();
+  }
+  function listo() {
+    st.done = true; save();
+    var n = (st.r.name || '').split(' ')[0];
+    show('<svg class="art check" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="#4F2474"/><circle cx="60" cy="60" r="58" fill="none" stroke="#CC2244" stroke-width="2" stroke-dasharray="3 7"/><path d="M38 61l15 15 30-32" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '<span class="k">Listo</span><h1>Gracias' + (n ? ', ' + esc(n) : '') + '. <em>Ya estamos en ello.</em></h1>' +
+      '<p class="sub">En 72 horas te mandamos la vista previa de tu página por WhatsApp y correo.</p>' +
+      '<p class="hint">Si te faltó mandar logo o fotos, mándalos por WhatsApp al <a href="https://wa.me/526635419838">663 541 9838</a>.</p>');
+    document.getElementById('barra').style.width = '100%';
+  }
+
+  if (st.i >= 0 && st.i < vis().length) pregunta(st.i); else intro();
+})();
+</script>
+</body>
+</html>
