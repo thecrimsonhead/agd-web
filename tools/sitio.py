@@ -22,7 +22,7 @@ SVC = [
        inc=['Logo y sus versiones', 'Paleta de colores y tipografías', 'Manual de uso de marca', 'Aplicaciones para redes y papelería'],
        pay='https://buy.stripe.com/3cI28q90yewX5TK1qdejK07', btn='Crear mi marca'),
   dict(k='impi', t='Registro de marca', p='$8,000', pn='por clase', d='Protegemos el nombre y logo de tu negocio ante el IMPI para que nadie más los use.',
-       inc=['Búsqueda de marcas parecidas', 'Elección de la clase correcta', 'Solicitud ante el IMPI', 'Seguimiento hasta el título'],
+       inc=['Búsqueda de marcas parecidas', 'Solicitud ante el IMPI', 'Derechos del IMPI incluidos', 'Seguimiento hasta el título'],
        pay='https://buy.stripe.com/bJebJ090ygF50zqfh3ejK08', btn='Registrar mi marca'),
 ]
 ICON = {
@@ -40,8 +40,8 @@ def card(s):
 <a class="btn" href="{s['pay']}">{E(s['btn'])} &rarr;</a><a class="mini" href="{WA}?text={E('Hola, tengo una duda sobre ' + s['t'].lower())}">Tengo una duda</a></article>'''
 FAQ = [('¿Cómo pago?', 'En línea, con tarjeta, desde el botón de cada servicio. La página web de campaña también se puede pagar a 12 meses sin intereses.'),
        ('¿Qué pasa después de pagar?', 'En menos de 24 horas te escribimos por WhatsApp para pedirte lo que necesitamos y darte fechas.'),
-       ('¿Dan factura?', 'Sí. Escríbenos por WhatsApp con tus datos fiscales después de pagar y se agrega el IVA.'),
-       ('¿El registro de marca incluye los derechos del IMPI?', 'Antes de iniciar revisamos tu marca y te confirmamos por escrito qué incluye y si hace falta alguna clase adicional.'),
+       ('¿Dan factura?', 'Sí. Los precios son más IVA si necesitas factura. Después de pagar, pídela por WhatsApp con tus datos fiscales.'),
+       ('¿El registro de marca incluye los derechos del IMPI?', 'Sí. Los $8,000 incluyen la búsqueda, la solicitud, los derechos del IMPI de una clase y el seguimiento hasta el título.'),
        ('¿Puedo combinar servicios?', 'Sí. Muchos clientes empiezan con su marca y después hacemos su página o su app con la misma identidad.')]
 faq = ''.join(f'<details class="rv"><summary>{E(q)}</summary><p>{E(a)}</p></details>' for q, a in FAQ)
 work_css = '''.work{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}@media(max-width:900px){.work{grid-template-columns:1fr 1fr}}@media(max-width:560px){.work{grid-template-columns:1fr}}
@@ -96,7 +96,7 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 <div class="ctas rv"><a class="btn" href="#servicios">Ver servicios &rarr;</a><a class="btn gh" href="{CAMP}">Página web en 72 h por $3,990</a></div></div>
 <div class="orb rv" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><div class="core"><img src="img/agd-logo.svg" alt=""></div>
 ''' + ''.join(f'<div class="it" style="left:{x}%;top:{y}%;animation-delay:-{k}s"><svg viewBox="0 0 48 48">{ICON[s["k"]]}</svg><span>{E(s["t"].split(" de ")[0] if s["k"]!="web" else "Páginas web")}</span></div>' for k, (s, (x, y)) in enumerate(zip(SVC, [(50, 6), (93, 38), (78, 88), (22, 88), (7, 38)]))) + f'''</div></div></div>
-<section id="servicios"><div class="wrap"><div class="cen"><span class="label">Servicios</span><h2 class="rv">Todo lo que tu negocio necesita, <span class="g">con precio claro</span></h2><p class="sub rv">Eliges, pagas en línea y en menos de 24 horas te escribimos para arrancar.</p></div>
+<section id="servicios"><div class="wrap"><div class="cen"><span class="label">Servicios</span><h2 class="rv">Todo lo que tu negocio necesita, <span class="g">con precio claro</span></h2><p class="sub rv">Eliges, pagas en línea y en menos de 24 horas te escribimos para arrancar. Precios más IVA si necesitas factura.</p></div>
 <div class="grid">{''.join(card(s) for s in SVC)}<article class="svc rv" style="justify-content:center;text-align:center"><div class="ic" style="margin:0 auto 16px"><svg viewBox="0 0 48 48"><path d="M10 12h28a4 4 0 014 4v14a4 4 0 01-4 4H22l-8 7v-7h-4a4 4 0 01-4-4V16a4 4 0 014-4z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg></div><h3>¿Necesitas otra cosa?</h3><p>Tiendas en línea, automatizaciones, presentaciones o algo a la medida. Platícanos y te decimos cómo lo resolvemos.</p><a class="btn gh" href="{WA}">Escríbenos por WhatsApp</a></article></div></div></section>
 <section id="proyectos" style="padding-top:20px"><div class="wrap"><div class="cen"><span class="label">Proyectos</span><h2 class="rv">Lo que hemos construido</h2><p class="sub rv">Páginas, sistemas y marcas para negocios reales.</p></div><div style="margin-top:36px">{work}</div></div></section>
 <section id="como"><div class="wrap"><div class="cen"><span class="label">Cómo trabajamos</span><h2 class="rv">Sin vueltas, <span class="g">sin juntas eternas</span></h2></div>
