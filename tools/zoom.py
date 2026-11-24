@@ -11,8 +11,9 @@ if(!i)return;e.preventDefault();zi.src=(i.currentSrc||i.src).replace(/([?&]w=)\\
 z.addEventListener('click',function(){z.hidden=true;});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')z.hidden=true;});})();</script>
 '''
-def poner(s):
-    return s if 'id="zm"' in s else s.replace('</body>', ZOOM + '</body>', 1)
+def poner(s, lang='es'):
+    z = ZOOM if lang == 'es' else ZOOM.replace('Toca para cerrar', 'Tap to close')
+    return s if 'id="zm"' in s else s.replace('</body>', z + '</body>', 1)
 
 if __name__ == '__main__':
     import sys
