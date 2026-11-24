@@ -117,6 +117,7 @@ footer{{padding:40px 0 60px;color:var(--mute);font-size:14px}}footer .wrap{{disp
 </body></html>'''
 import lightbox
 page = lightbox.fix(page)
+import zoom; page = zoom.poner(page)
 open(os.path.join(R, 'sitio', 'index.html'), 'w', encoding='utf-8').write(page)
 aviso = f'''<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aviso de privacidad | AGDesign</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet"><style>body{{margin:0;background:#080810;color:#ECEAF2;font:300 17px/28px Outfit,sans-serif}}.w{{max-width:760px;margin:0 auto;padding:40px 20px 80px}}h1{{font-weight:700;color:#fff}}h2{{font-weight:600;color:#fff;font-size:20px;margin-top:28px}}a{{color:#FF4D6A}}</style></head><body><div class="w">

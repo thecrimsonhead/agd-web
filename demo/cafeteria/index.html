@@ -60,4 +60,15 @@ footer{padding:30px 0 90px;font-size:14px;opacity:.7;display:flex;justify-conten
 <script>(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 var m=document.getElementById('mod');document.querySelectorAll('[data-d]').forEach(function(x){x.addEventListener('click',function(ev){ev.preventDefault();m.classList.add('on')})});document.getElementById('cerrar').onclick=function(){m.classList.remove('on')};m.onclick=function(e){if(e.target===m)m.classList.remove('on')};
 var st=document.querySelector('.stats');if(st)new IntersectionObserver(function(es,o){if(!es[0].isIntersecting)return;o.disconnect();st.querySelectorAll('b').forEach(function(b){var t=b.textContent,n=parseFloat(b.dataset.n),d=t.indexOf('.')>-1,p=t.replace(/[0-9.]/g,''),pre=t[0]==='+'?'+':'',suf=t.slice(-1)==='%'?'%':'',k=0,f=function(){k++;var v=n*Math.min(1,k/40);b.textContent=pre+(d?v.toFixed(1):Math.round(v))+suf;if(k<40)requestAnimationFrame(f)};f()})}).observe(st);})();</script>
+<div id="zm" hidden><img alt=""><span>Toca para cerrar</span></div>
+<style>#zm{position:fixed;inset:0;z-index:9999;background:rgba(5,5,12,.93);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:10px;cursor:zoom-out}#zm[hidden]{display:none}#zm img{max-width:100%;max-height:86vh;border-radius:12px;object-fit:contain}#zm span{color:#bbb;font:13px sans-serif}img.zz{cursor:zoom-in}</style>
+<script>(function(){var z=document.getElementById('zm'),zi=z.querySelector('img');
+function ok(i){return !i.closest('a,button,nav,#zm')&&!/\.svg(\?|$)/i.test(i.src)&&(i.width>=120||i.height>=120);}
+function marca(){document.querySelectorAll('img').forEach(function(i){if(ok(i))i.classList.add('zz');});}
+marca();window.addEventListener('load',marca);
+document.addEventListener('click',function(e){var i=e.target.closest&&e.target.closest('img.zz');
+if(!i){var s=e.target.closest&&e.target.closest('.shot,.ph,figure');i=s&&!s.closest('a')&&s.querySelector('img.zz');}
+if(!i)return;e.preventDefault();zi.src=(i.currentSrc||i.src).replace(/([?&]w=)\d+/,'$11600');z.hidden=false;});
+z.addEventListener('click',function(){z.hidden=true;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')z.hidden=true;});})();</script>
 </body></html>
